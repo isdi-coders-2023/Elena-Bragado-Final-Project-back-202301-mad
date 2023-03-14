@@ -3,7 +3,7 @@ import express from 'express';
 import morgan from 'morgan';
 import createDebug from 'debug';
 
-const debug = createDebug('HOM:app');
+const debug = createDebug('HOME:app');
 
 export const app = express();
 app.disable('x-powered-by');

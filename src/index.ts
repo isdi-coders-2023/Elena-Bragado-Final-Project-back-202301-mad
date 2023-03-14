@@ -3,7 +3,7 @@ import createDebug from 'debug';
 import http from 'http';
 import { dbConnect } from './db/db.connect.js';
 
-const debug = createDebug('HOM');
+const debug = createDebug('HOME');
 const PORT = process.env.PORT || 4500;
 
 const server = http.createServer(app);

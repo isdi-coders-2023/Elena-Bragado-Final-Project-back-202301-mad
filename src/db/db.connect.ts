@@ -2,7 +2,7 @@ import mongoose from 'mongoose';
 import { config } from '../config.js';
 import createDebug from 'debug';
 
-const debug = createDebug('HOM:DBconnect');
+const debug = createDebug('HOME:DBconnect');
 
 const { user, password, cluster, dbName } = config;
 
