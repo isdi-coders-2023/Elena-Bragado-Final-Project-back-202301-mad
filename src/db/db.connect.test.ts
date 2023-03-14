@@ -11,7 +11,7 @@ describe('Given the dbConnect function', () => {
     });
   });
   describe('When NODE_ENV !== test', () => {
-    test('Then it should be a connection to testing db', async () => {
+    test('Then it should be a connection to testing dbConnect', async () => {
       const result = await dbConnect('dev');
       expect(typeof result).toBe(typeof mongoose);
       expect(mongoose.connection.db.databaseName).not.toContain('Testing');
