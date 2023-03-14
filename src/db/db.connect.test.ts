@@ -1,8 +1,7 @@
 import { dbConnect } from './db.connect';
 import mongoose from 'mongoose';
-import { config } from '../config.js';
 
-describe('Given dbConnect function', () => {
+describe('Given the dbConnect function', () => {
   describe('When NODE_ENV === test', () => {
     test('Then it should be a connection to testing db', async () => {
       const result = await dbConnect();
