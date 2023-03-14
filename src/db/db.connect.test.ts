@@ -1,9 +1,10 @@
 import mongoose from 'mongoose';
-import { dbConnect } from './db.connect.js';
+import { dbConnect } from './db.connect';
 
+jest.setTimeout(5000);
 describe('Given dbConnect function ', () => {
   describe('When NODE_ENV !== test ', () => {
-    test('Then it should be a connection to testing db', async () => {
+    test('Then it should be a connection to testing db ', async () => {
       mongoose.disconnect();
       const result = await dbConnect();
       expect(typeof result).toBe(typeof mongoose);
