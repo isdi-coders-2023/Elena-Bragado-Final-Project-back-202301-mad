@@ -1,5 +1,6 @@
 import { dbConnect } from './db.connect';
 import mongoose from 'mongoose';
+import { config } from '../config.js';
 
 describe('Given dbConnect function', () => {
   describe('When NODE_ENV === test', () => {
