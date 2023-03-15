@@ -1,31 +1,39 @@
+import { User } from '../entities/user';
 import { UserModel } from './user.mongo.model';
 import { UsersMongoRepo } from './users.mongo.repo';
+import { Repo } from './users.repo.interface';
 
 jest.mock('./user.mongo.model');
 
-describe('Given UserMongoRepo', () => {
-  const repoInstance = UsersMongoRepo.getInstance();
-  describe('when we call getInstance()', () => {
-    test('then the UserMongoRepo shoul be INSTANTIATE', async () => {
-      expect(repoInstance).toBeInstanceOf(UsersMongoRepo);
+describe('Given UsersMongoRepo', () => {
+  let repo: Repo<User>;
+
+  beforeEach(() => {
+    repo = UsersMongoRepo.getInstance();
+  });
+
+  describe('When getInstance is called', () => {
+    it('Then it should return a single instance of UsersMongoRepo', () => {
+      const repo = UsersMongoRepo.getInstance();
+      expect(repo).toBeInstanceOf(UsersMongoRepo);
     });
   });
-  describe('when the create method is used', () => {
-    test('then it should return the new data', async () => {
-      const mockNewItem = { id: '2' };
-      (UserModel.create as jest.Mock).mockResolvedValue(mockNewItem);
-      const result = await repoInstance.create(mockNewItem);
+
+  describe('When the create method is used', () => {
+    test('Then the create method should be called', async () => {
+      (UserModel.create as jest.Mock).mockResolvedValue({ email: 'test' });
+      const result = await repo.create({ email: 'test' });
       expect(UserModel.create).toHaveBeenCalled();
-      expect(result.id).toBe('2');
+      expect(result).toEqual({ email: 'test' });
     });
   });
-  describe('when the search method is used', () => {
-    test('then it should return the data searched', async () => {
-      const mockItem = { id: '2' };
-      (UserModel.find as jest.Mock).mockResolvedValue(mockItem);
-      const result = await repoInstance.search({ key: 'some', value: 'oso' });
+
+  describe('When the search method is used', () => {
+    test('Then the search method should be called', async () => {
+      (UserModel.find as jest.Mock).mockResolvedValue({ email: 'test' });
+      const result = await repo.search({ key: 'test', value: 'test' });
       expect(UserModel.find).toHaveBeenCalled();
-      expect(result).toEqual(mockItem);
+      expect(result).toEqual({ email: 'test' });
     });
   });
 });
