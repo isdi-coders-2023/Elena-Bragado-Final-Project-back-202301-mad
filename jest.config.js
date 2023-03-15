@@ -11,5 +11,6 @@ export default {
     'routers',
     'config.ts',
     'user.mongo.model.ts',
+    'users.repo.interface.ts',
   ],
 };
