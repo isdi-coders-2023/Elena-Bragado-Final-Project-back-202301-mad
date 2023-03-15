@@ -18,15 +18,15 @@ export class UsersMongoRepo implements Repo<User> {
     debug('Instantiated at constructor');
   }
 
-  async search(query: { key: string; value: unknown }): Promise<User[]> {
-    debug('Instantiated at constructor at search method');
-    const data = await UserModel.find({ [query.key]: query.value });
-    return data;
-  }
-
   async create(info: Partial<User>): Promise<User> {
     debug('Instantiated at constructor at create method');
     const data = await UserModel.create(info);
+    return data;
+  }
+
+  async search(query: { key: string; value: unknown }): Promise<User[]> {
+    debug('Instantiated at constructor at search method');
+    const data = await UserModel.find({ [query.key]: query.value });
     return data;
   }
 }
