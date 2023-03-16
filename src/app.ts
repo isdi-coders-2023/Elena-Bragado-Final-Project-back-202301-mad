@@ -3,6 +3,7 @@ import express from 'express';
 import morgan from 'morgan';
 import createDebug from 'debug';
 
+// eslint-disable-next-line @typescript-eslint/no-unused-vars
 const debug = createDebug('HOME:app');
 
 export const app = express();
