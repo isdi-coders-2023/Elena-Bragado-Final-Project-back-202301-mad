@@ -3,7 +3,7 @@ import createDebug from 'debug';
 import { UsersMongoRepo } from '../repository/users.mongo.repo';
 import { UserController } from '../controllers/user.controller';
 
-const debug = createDebug('HOME:users:router');
+const debug = createDebug('HOME:users:routers');
 
 export const usersRouter = router();
 const repoUsers = UsersMongoRepo.getInstance();
