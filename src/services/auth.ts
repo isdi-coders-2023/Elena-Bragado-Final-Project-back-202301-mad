@@ -2,7 +2,7 @@ import jwt from 'jsonwebtoken';
 import bcrypt from 'bcryptjs';
 import { config } from '../config.js';
 import createDebug from 'debug';
-import { HTTPError } from '../errors/errors';
+import { HTTPError } from '../errors/errors.js';
 
 const debug = createDebug('HOME:services:auth');
 
