@@ -16,7 +16,7 @@ describe('Given the Auth class ', () => {
       expect(jwt.sign).toHaveBeenCalled();
     });
   });
-  describe('when we call the verifyJWTPayload', () => {
+  describe('when we call the verifyJWTGettingPayload', () => {
     const tokenMock = 'test';
     const payloadMock = {
       id: '1',
@@ -24,12 +24,12 @@ describe('Given the Auth class ', () => {
     };
     test('then if we receive PayloadToken correctly, it should be called', () => {
       (jwt.verify as jest.Mock).mockReturnValue(payloadMock);
-      Auth.verifyJWTPayload(tokenMock);
+      Auth.verifyJWTGettingPayload(tokenMock);
       expect(jwt.verify).toHaveBeenCalled();
     });
     test('then if we receive an unvalid PayloadToken, it should throw an error', () => {
       (jwt.verify as jest.Mock).mockReturnValue('string');
-      expect(() => Auth.verifyJWTPayload(tokenMock)).toThrow();
+      expect(() => Auth.verifyJWTGettingPayload(tokenMock)).toThrow();
     });
   });
   describe('when we call the hash function', () => {
