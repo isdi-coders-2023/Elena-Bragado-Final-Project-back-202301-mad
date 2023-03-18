@@ -15,10 +15,6 @@ dbConnect()
   })
   .catch((error) => server.emit('error', error));
 
-server.on('error', (error) => {
-  debug('Server error:', error.message);
-});
-
 server.on('listening', () => {
   debug('Listening in http://localhost:' + PORT);
 });
