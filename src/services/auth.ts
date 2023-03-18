@@ -18,7 +18,7 @@ export class Auth {
     return jwt.sign(payload, config.jwtSecret as string);
   }
 
-  static verifyJWTPayload(token: string) {
+  static verifyJWTGettingPayload(token: string) {
     const result = jwt.verify(token, config.jwtSecret as string);
     if (typeof result === 'string')
       throw new HTTPError(498, 'Invalid token', `Invalid token: ${result}`);
