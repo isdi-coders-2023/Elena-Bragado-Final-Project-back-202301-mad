@@ -19,7 +19,7 @@ describe('Given UsersMongoRepo', () => {
     });
   });
 
-  describe('When the create method is used', () => {
+  describe('When create method is used', () => {
     test('Then the create method should be called', async () => {
       (UserModel.create as jest.Mock).mockResolvedValue({ email: 'test' });
       const result = await repo.create({ email: 'test' });

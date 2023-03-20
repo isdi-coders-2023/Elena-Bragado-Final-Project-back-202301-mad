@@ -5,7 +5,7 @@ import createDebug from 'debug';
 
 const debug = createDebug('HOME:repo:users');
 
-export class UsersMongoRepo implements Repo<User> {
+export class UsersMongoRepo implements Partial<Repo<User>> {
   private static instance: UsersMongoRepo;
 
   public static getInstance(): UsersMongoRepo {
@@ -24,7 +24,7 @@ export class UsersMongoRepo implements Repo<User> {
     return data;
   }
 
-  async search(query: { key: string; value: unknown }): Promise<User[]> {
+  async search(query: { key: string; value: unknown }) {
     debug('Instantiated at constructor at search method');
     const data = await UserModel.find({ [query.key]: query.value });
     return data;
