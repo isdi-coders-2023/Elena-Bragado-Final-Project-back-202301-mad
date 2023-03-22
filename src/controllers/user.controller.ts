@@ -53,10 +53,11 @@ export class UserController {
         email: data[0].email,
       };
       const token = Auth.createJWT(payload);
+      const user = data[0];
 
       resp.status(202);
       resp.json({
-        results: [token],
+        results: [token, user],
       });
     } catch (error) {
       next(error);
