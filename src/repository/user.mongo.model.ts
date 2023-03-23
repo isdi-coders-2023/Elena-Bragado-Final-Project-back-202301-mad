@@ -11,6 +11,15 @@ const userSchema = new Schema<User>({
     type: String,
     required: true,
   },
+  firstName: {
+    type: String,
+  },
+  lastName: {
+    type: String,
+  },
+  image: {
+    type: String,
+  },
 });
 
 userSchema.set('toJSON', {
