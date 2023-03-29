@@ -41,9 +41,9 @@ describe('Given Professional controller', () => {
       (repo.query as jest.Mock).mockResolvedValueOnce('Test');
       await controller.addOne(req, resp, next);
       expect(repo.query).toHaveBeenCalled();
+      expect(resp.json).toHaveBeenCalled();
       expect(resp.status).toHaveBeenCalled();
       expect(resp.json).toHaveBeenCalledWith({ body: 'Test' });
-      expect(next).toHaveBeenCalledWith(error);
     });
 
     test('Then it should be not ok', async () => {
