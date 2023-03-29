@@ -12,5 +12,7 @@ export default {
     'config.ts',
     'user.mongo.model.ts',
     'users.repo.interface.ts',
+    '/*.model.*',
+    'professionals.repo.interface.ts',
   ],
 };
