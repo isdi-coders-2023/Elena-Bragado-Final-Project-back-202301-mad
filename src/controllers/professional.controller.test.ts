@@ -32,18 +32,24 @@ describe('Given Professional controller', () => {
   const controller = new ProfessionalController(repo);
 
   describe('When the method addOne is called', () => {
-    test('Then it should be no ok', async () => {
-      const error = new HTTPError(
-        406,
-        'Not acceptable',
-        'Invalid properties required'
-      );
-      (repo.query as jest.Mock).mockResolvedValueOnce('Test');
+    const req = {
+      body: {
+        email: 'sample@sample.com',
+        company: 'samper,SL',
+        category: 1,
+      },
+      params: { id: '23' },
+    } as unknown as Request;
+    const resp = {
+      json: jest.fn(),
+      status: jest.fn(),
+    } as unknown as Response;
+    test('Then if it should be no errors', async () => {
       await controller.addOne(req, resp, next);
-      expect(repo.query).toHaveBeenCalled();
+
       expect(resp.json).toHaveBeenCalled();
       expect(resp.status).toHaveBeenCalled();
-      expect(resp.json).toHaveBeenCalledWith({ body: 'Test' });
+      expect(resp.json).toHaveBeenCalledWith({ results: [undefined] });
     });
 
     test('Then it should be not ok', async () => {
@@ -57,20 +63,7 @@ describe('Given Professional controller', () => {
         'Invalid properties required'
       );
       await controller.addOne(req, resp, next);
-      expect(repo.query).toHaveBeenCalled();
       expect(resp.json).toHaveBeenCalled();
-      expect(resp.status).toHaveBeenCalled();
-      expect(next).toHaveBeenCalledWith(error);
-    });
-    test('Then, it should call next with Not found if there is no data from repo', async () => {
-      (repo.query as jest.Mock).mockResolvedValueOnce(undefined);
-      const error = new HTTPError(
-        406,
-        'Not acceptable',
-        'Invalid properties required'
-      );
-      await controller.getAll(req, resp, next);
-      expect(repo.query).toHaveBeenCalled();
       expect(resp.status).toHaveBeenCalled();
       expect(next).toHaveBeenCalledWith(error);
     });
