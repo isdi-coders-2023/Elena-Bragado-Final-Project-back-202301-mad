@@ -34,18 +34,13 @@ describe('Given the professionals repository', () => {
 
   describe('When we use the query method', () => {
     test('Then it should return all de professionals', async () => {
-      (ProfessionalModel.find as jest.Mock).mockRejectedValue([]);
+      (ProfessionalModel.find as jest.Mock).mockResolvedValue([]);
       await repo.query();
       expect(ProfessionalModel.find).toHaveBeenCalled();
     });
-    test('Then it should  throw an error if it does not find', async () => {
-      (ProfessionalModel.findByIdAndUpdate as jest.Mock).mockResolvedValue(
-        undefined
-      );
-    });
   });
 
-  describe(`When we use the queryId method`, () => {
+  describe('When we use the queryId method', () => {
     test('Then it should return a professional by id', async () => {
       (ProfessionalModel.findById as jest.Mock).mockResolvedValue([]);
       await repo.queryId('id');
