@@ -28,7 +28,6 @@ export class ProfessionalsMongoRepo implements ProfessionalRepo<Professional> {
   async query(): Promise<Professional[]> {
     debug('query-getall');
     const data = await ProfessionalModel.find();
-    if (!data) throw new HTTPError(404, 'Not found', 'Professionals not found');
     return data;
   }
 
