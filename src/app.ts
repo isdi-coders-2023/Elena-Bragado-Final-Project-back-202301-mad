@@ -4,6 +4,7 @@ import morgan from 'morgan';
 import createDebug from 'debug';
 import { usersRouter } from './routers/users.routes.js';
 import { CustomError } from './errors/errors.js';
+import { professionalsRouter } from './routers/professionals.routes.js';
 
 // eslint-disable-next-line @typescript-eslint/no-unused-vars
 const debug = createDebug('HOME:app');
@@ -22,12 +23,14 @@ app.use(cors(corsOptions));
 app.use(express.static('public'));
 
 app.use('/users', usersRouter);
+app.use('/professionals', professionalsRouter);
 
 app.get('/', (_req, resp) => {
   resp.json({
     info: 'HomeClick!',
     endpoints: {
       users: '/users',
+      professionals: '/professionals',
     },
   });
 });
