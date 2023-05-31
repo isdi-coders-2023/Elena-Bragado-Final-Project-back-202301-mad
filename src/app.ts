@@ -22,8 +22,8 @@ app.use(cors(corsOptions));
 
 app.use(express.static('public'));
 
-app.use('/users', usersRouter);
 app.use('/professionals', professionalsRouter);
+app.use('/users', usersRouter);
 
 app.get('/', (_req, resp) => {
   resp.json({
