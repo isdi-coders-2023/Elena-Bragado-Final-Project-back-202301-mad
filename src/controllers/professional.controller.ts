@@ -17,7 +17,7 @@ export class ProfessionalController {
   async addOne(req: RequestPlus, resp: Response, next: NextFunction) {
     try {
       debug('POST: addOne');
-      if (!req.body.email || !req.body.company || !req.body.category)
+      if (!req.body.email || !req.body.company)
         throw new HTTPError(
           406,
           'Not acceptable',

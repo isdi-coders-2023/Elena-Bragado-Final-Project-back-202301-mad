@@ -12,7 +12,7 @@ const controllerProfessionals = new ProfessionalController(repoProfessionals);
 debug('Professionals router');
 
 professionalsRouter.post(
-  '/',
+  '/add',
   controllerProfessionals.addOne.bind(controllerProfessionals)
 );
 professionalsRouter.get(
