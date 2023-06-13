@@ -1,6 +1,5 @@
 import createDebug from 'debug';
 import { Response, Request, NextFunction } from 'express';
-
 import { Professional } from '../entities/professional.js';
 import { HTTPError } from '../errors/errors.js';
 import { RequestPlus } from '../interceptors/logged.js';
